@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +44,10 @@ public class ShowProductServlet extends HttpServlet {
 		ProductDAO pd = new ProductDAO();
 		ProductBean pb = pd.getSingleProduct(pid);
 		request.setAttribute("pdet", pb);
+		ArrayList<String> sizes = pd.getSizes(pb.getPid());
+		for(String r : sizes)
+		System.out.println(r);
+		request.setAttribute("sizes", sizes);
 		request.getRequestDispatcher("single.jsp").forward(request, response);
 		
 	}

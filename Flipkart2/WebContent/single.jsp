@@ -276,14 +276,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<%@ page import = "java.util.*, beans.ProductBean" %>
                     <%!
                     ProductBean pr;
+					ArrayList<String> sizes;			
                     %>
 
                     <%
+                    sizes = (ArrayList)request.getAttribute("sizes");
                     pr = (ProductBean)request.getAttribute("pdet"); 
                     %>
                     <%out.println("<div class='col-md-5 single-right-left '><div class='grid images_3_of_2'><div class='flexslider'><ul class='slides'><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li></ul>");
-					out.println("<div class='clearfix'></div></div></div></div><div class='col-md-7 single-right-left simpleCart_shelfItem'><h3>" + pr.getBrand() + " " + pr.getColor() + " " + pr.getType()+ " </h3><p><span class='item_price'>"+ pr.getPrice()+"</span></p><div class='single-infoagile'><p>" + pr.getDescription() +"</p></div>");
-				    out.println("<div class='occasion-cart'><div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'><form action='#' method='post'><fieldset><input type='hidden' name='cmd' value='_cart' /><input type='hidden' name='add' value='1' /><input type='hidden' name='business' value=' ' /><input type='hidden' name='item_name' value='Zeeba Premium Basmati Rice - 5 KG' /><input type='hidden' name='amount' value='950.00' /><input type='hidden' name='discount_amount' value='1.00' /><input type='hidden' name='currency_code' value='USD' /><input type='hidden' name='return' value=' ' /><input type='hidden' name='cancel_return' value=' ' /><input type='submit' name='submit' value='Add to cart' class='button' /></fieldset></form></div></div></div><div class='clearfix'></div></div></div>");
+					out.println("<div class='clearfix'></div></div></div></div><div class='col-md-7 single-right-left simpleCart_shelfItem'><h3>" + pr.getBrand() + " " + pr.getColor() + " " + pr.getType()+ " </h3><p><span class='item_price'>"+ pr.getPrice()+"</span></p><div class='single-infoagile'><p>" + pr.getDescription() +"<br>");
+					for(String s : sizes)
+					    out.println("<a href='#'>" + s + "</a>");
+				    out.println("<br><a>Sizing Help?</a></p></div><div class='occasion-cart'><div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'><form action='#' method='post'><fieldset><input type='hidden' name='cmd' value='_cart' /><input type='hidden' name='add' value='1' /><input type='hidden' name='business' value=' ' /><input type='hidden' name='item_name' value='Zeeba Premium Basmati Rice - 5 KG' /><input type='hidden' name='amount' value='950.00' /><input type='hidden' name='discount_amount' value='1.00' /><input type='hidden' name='currency_code' value='USD' /><input type='hidden' name='return' value=' ' /><input type='hidden' name='cancel_return' value=' ' /><input type='submit' name='submit' value='Add to cart' class='button' /></fieldset></form></div></div></div><div class='clearfix'></div></div></div>");
 	%>
 	<!-- //Single Page -->
 	<!-- special offers -->

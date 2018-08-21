@@ -58,7 +58,8 @@ public class DisplayProduct extends HttpServlet {
         	cat = "Bottom";
         ArrayList<ProductBean> pl = new ArrayList<ProductBean>();
         ProductDAO pd = new ProductDAO();
-        if(ob.equals(null)) {	
+
+        if (session.getAttribute("omni") == null || session.getAttribute("omni").equals("")) {	                                                   
         	System.out.println("Before calling f");
             pl = pd.getProduct(cat);
             System.out.println("After calling f");
@@ -68,18 +69,22 @@ public class DisplayProduct extends HttpServlet {
         		fil = "bust"; 
         		val = ob.getBust();
         		db = "wtsizechart";
+        		pl = pd.getOmniProducts(cat, fil, db, val);
         	}
         	else if (cat.equals("Bottom")) {
         		fil = "waist";
         		val = ob.getWaist();
         		db = "wbsizechart";
+        		pl = pd.getOmniProducts(cat, fil, db, val);
         	}
-        	else {
+        	
+        	 if(cat.equals("Foot")) {
         		fil = "length";
-        		val = Math.round(ob.getShoe());
+        		Float val2 = ob.getShoe();
         		db = "wssizechart";
+        		pl = pd.getOmniShoeProducts(cat, fil, db, val2);
         	}
-        	pl = pd.getOmniProducts(cat, fil, db, val);
+        	
             
         }
         		

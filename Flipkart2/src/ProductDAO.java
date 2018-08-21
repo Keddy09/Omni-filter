@@ -109,6 +109,47 @@ public class ProductDAO {
 		return pb;
 		
 	}
+
+	public ArrayList<String> getSizes(int pid) {
+		DBConnection db = new DBConnection();
+		Connection con = db.getConnection();
+		ResultSet rs;
+		ArrayList<String> sizes  = new ArrayList<String>();
+		try {
+		PreparedStatement ps = con.prepareStatement("select size from Stock where pid=? and stock > 0");
+		ps.setInt((1), pid);
+		 
+		rs = ps.executeQuery();
+		while(rs.next()) {
+			sizes.add(rs.getString(1));		
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return sizes;
+	}
+
+	public ArrayList<ProductBean> getOmniShoeProducts(String cat, String fil, String db, Float val) {
+		DBConnection dbb = new DBConnection();
+		Connection con = dbb.getConnection();
+		ResultSet rs;
+		ArrayList<ProductBean> pl = new ArrayList<ProductBean>();
+		
+		try {
+		PreparedStatement st = con.prepareStatement("select * from products where pid in(select stock.pid from stock, "+ db + " " + "where (stock.brand, stock.size) in (select " + db +".brand, " + db + ".size from " + db + " where " + fil + " - " + val + "between -0.2 and 0.2 and stock.stock > 0)");
+		rs = st.executeQuery();
+		System.out.println("After Query");
+		while(rs.next()) {
+			ProductBean pb = new ProductBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+			System.out.println(rs.getInt(1) + rs.getString(2) + rs.getString(3) + rs.getString(4) + rs.getString(5) + rs.getString(6) + rs.getString(7) + rs.getString(8) + rs.getString(9));
+		    pl.add(pb);
+		    System.out.println(pb);
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return pl;
+	}
 	}
 	
 	
