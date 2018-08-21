@@ -134,9 +134,13 @@ public class ProductDAO {
 		Connection con = dbb.getConnection();
 		ResultSet rs;
 		ArrayList<ProductBean> pl = new ArrayList<ProductBean>();
-		
+		double v1 = 0.2;
+		double v2 = -0.2;
 		try {
-		PreparedStatement st = con.prepareStatement("select * from products where pid in(select stock.pid from stock, "+ db + " " + "where (stock.brand, stock.size) in (select " + db +".brand, " + db + ".size from " + db + " where " + fil + " - " + val + "between -0.2 and 0.2 and stock.stock > 0)");
+		PreparedStatement st = con.prepareStatement("select * from products where pid in(select stock.pid from stock, "+ db + " " + "where (stock.brand, stock.size) in (select " + db +".brand, " + db + ".uk from " + db + " where " + fil + " - " + val + " between ? and ? )and stock.stock > 0)");
+		st.setDouble(1, v2);
+		st.setDouble(2, v1);
+		System.out.println("bEFORE Query");
 		rs = st.executeQuery();
 		System.out.println("After Query");
 		while(rs.next()) {
