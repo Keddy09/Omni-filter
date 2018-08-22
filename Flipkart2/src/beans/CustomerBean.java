@@ -18,6 +18,13 @@ public class CustomerBean {
 		this.phone = phone;
 		this.pwd = pwd;
 	}
+	public CustomerBean(String email, String fname, String lname, String phone) {
+		super();
+		this.email = email;
+		this.fname = fname;
+		this.lname = lname;
+		this.phone = phone;
+	}
 	
 	public String getEmail() {
 		return email;

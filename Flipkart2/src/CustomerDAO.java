@@ -66,6 +66,21 @@ public class CustomerDAO {
 		}catch(Exception e) {}
 		return false;
 	}
+
+	public CustomerBean getProfile(String email) {
+		try {
+			DBConnection db = new DBConnection();
+			Connection con = db.getConnection();
+			PreparedStatement ps = con.prepareStatement("select fname, lname, phone from Customer where email = ?");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+		    rs.next();
+		    CustomerBean cb = new CustomerBean(email, rs.getString(1), rs.getString(2), rs.getString(3));
+				return cb;
+		}catch(Exception e) {}
+		return null;
+		
+	}
 	
 	
 	
