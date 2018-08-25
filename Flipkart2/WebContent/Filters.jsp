@@ -271,36 +271,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</span>
 			</h3>
 			<!-- //tittle heading -->
-			<%@ page import = "java.util.*, beans.ProductBean" %>
+			<%@ page import = "java.util.*, beans.OmniBean" %>
                     <%!
-                    ProductBean pr;
-					ArrayList<String> sizes;			
+                    OmniBean pr;
+					ArrayList<OmniBean> ol;			
                     %>
 
                     <%
-                    sizes = (ArrayList)request.getAttribute("sizes");
-                    pr = (ProductBean)request.getAttribute("pdet"); 
+                    ol = (ArrayList)request.getAttribute("ol"); 
                     %>
-                    <%out.println("<div class='col-md-5 single-right-left '><div class='grid images_3_of_2'><div class='flexslider'><ul class='slides'><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li></ul>");
-					out.println("<div class='clearfix'></div></div></div></div><div class='col-md-7 single-right-left simpleCart_shelfItem'><h3>" + pr.getBrand() + " " + pr.getColor() + " " + pr.getType()+ " </h3><p><span class='item_price'>"+ pr.getPrice()+"</span></p><div class='single-infoagile'><p>" + pr.getDescription() +"<br>");
-					out.println("<");
-					for(String s : sizes)
-					    out.println("<a href='#'>" + s + "</a>");
-				    out.println("<br><a>Sizing Help?</a></p></div><div class='occasion-cart'><div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'><form action='AddToCart' method='post'><fieldset><input type='hidden' name='pid' value='" + pr.getPid() + "'/><input type='submit' name='submit' value='Add to cart' class='button' /></fieldset></form></div></div></div><div class='clearfix'></div></div></div>");
-	%>
-	<!-- //Single Page -->
-	<!-- special offers -->
-	<!-- //special offers -->
+<center> <h1> My Filters </h1>
+<br><br>
+<table>
+<tr>
+<th>Name</th>
+<th>Shoulder</th>
+<th>Bust/Chest</th>
+<th>Waist</th>
+<th>Hip</th>
+<th>Foot Length</th>
+</tr>
+<%
+for (OmniBean ob : ol){
+out.println("<tr>");
+out.println("<td>" + ob.getName() + "</td>");
+out.println("<td>" + ob.getShoulder() + "</td>");
+out.println("<td>" + ob.getBust() + "</td>");
+out.println("<td>" + ob.getWaist() + "</td>");
+out.println("<td>" + ob.getHip() + "</td>");
+out.println("<td>" + ob.getShoe() + "</td>");
+out.println("<td><a href = '/Flipkart2/DeleteFilter?fid=" + ob.getFid() + "'><span class = 'glyphicon glyphicon-trash'></span>'</a> </td>");
+out.println("</tr>");
+}
+%>
+</table></center>
+<br><br>
+<center>
+<button onClick='goBack()'>Back</button>
 
-	<!-- newsletter -->
-	
-	<!-- //newsletter -->
-	<!-- footer -->
-S
-	<!-- //footer -->
-	<!-- copyright -->
-	>
-	<!-- //copyright -->
+</center>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+
 
 	<!-- js-files -->
 	<!-- jquery -->
@@ -469,3 +487,24 @@ S
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

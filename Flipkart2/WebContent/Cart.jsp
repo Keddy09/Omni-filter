@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>Product</title>
+	<title>My Cart</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -34,8 +28,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--//pop-up-box-->
 	<!-- price range -->
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
-	<!-- flexslider -->
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 	<!-- fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 </head>
@@ -47,6 +39,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!-- //top-header -->
 	<!-- header-bot-->
+	<div class="header-bot">
+		<div class="header-bot_inner_wthreeinfo_header_mid">
+			<!-- header-bot-->
+			<div class="col-md-4 logo_agile">
+				<h1>
+					<a href="index.html">
+						<span>G</span>rocery
+						<span>S</span>hoppy
+						<img src="images/logo2.png" alt=" ">
+					</a>
+				</h1>
+			</div>
+			<!-- header-bot-->
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<!-- header-bot-->
@@ -101,9 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="clearfix"></div>
 		</div>
-	</div>
-	
-	<!-- signin Model -->
+	</div>	<!-- signin Model -->
 	<!-- Modal1 -->
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
@@ -144,6 +147,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //signin Model -->
 	<!-- signup Model -->
 	<!-- Modal2 -->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Sign Up</h3>
+						<p>
+							Come join the Grocery Shoppy! Let's set up your Account.
+						</p>
+						<form action="#" method="post">
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" placeholder="Name" name="Name" required="">
+							</div>
+							<div class="styled-input">
+								<input type="email" placeholder="E-mail" name="Email" required="">
+							</div>
+							<div class="styled-input">
+								<input type="password" placeholder="Password" name="password" id="password1" required="">
+							</div>
+							<div class="styled-input">
+								<input type="password" placeholder="Confirm Password" name="Confirm Password" id="password2" required="">
+							</div>
+							<input type="submit" value="Sign Up">
+						</form>
+						<p>
+							<a href="#">By clicking register, I agree to your terms</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- //Modal content-->
+		</div>
+	</div>
+	<!-- //Modal2 -->
+	<!-- //signup Model -->
+	<!-- //header-bot -->
 	<div class="ban-top">
 		<div class="container">
 			<div class="top_nav_left">
@@ -237,8 +283,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>	<!-- //navigation -->
-
-	<!-- //navigation -->
 	<!-- banner-2 -->
 	<div class="page-head_agile_info_w3l">
 
@@ -253,17 +297,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="index.html">Home</a>
 						<i>|</i>
 					</li>
-					<li>Single Page</li>
+					<li>Checkout</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!-- //page -->
-	<!-- Single Page -->
-	<div class="banner-bootom-w3-agileits">
+	<!-- checkout page -->
+	<div class="privacy">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Single Product
+			<h3 class="tittle-w3l">Checkout
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -271,35 +315,93 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</span>
 			</h3>
 			<!-- //tittle heading -->
-			<%@ page import = "java.util.*, beans.ProductBean" %>
-                    <%!
-                    ProductBean pr;
-					ArrayList<String> sizes;			
-                    %>
+			<div class="checkout-right">
+				<h4>Your cart contains:
+					<span>3 Products</span>
+				</h4>
+				<div class="table-responsive">
+					<table class="timetable_sub">
+						<tbody>
+							<tr class="rem1">
+								<td class="invert">1</td>
+								<td class="invert-image">
+									<a href="single2.html">
+										<img src="images/and1.jpg" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert">Spotzero Spin Mop</td>
+								<td class="invert">$888.00</td>
+								<td class="invert">
+									<div class="rem">
+										<div class="close1"> </div>
+									</div>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="checkout-left">
+				<div class="address_form_agile">
+					<h4>Add a new Details</h4>
+					<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+							<div class="information-wrapper">
+								<div class="first-row">
+									<div class="controls">
+										<input class="billing-address-name" type="text" name="name" placeholder="Full Name" required="">
+									</div>
+									<div class="w3_agileits_card_number_grids">
+										<div class="w3_agileits_card_number_grid_left">
+											<div class="controls">
+												<input type="text" placeholder="Mobile Number" name="number" required="">
+											</div>
+										</div>
+										<div class="w3_agileits_card_number_grid_right">
+											<div class="controls">
+												<input type="text" placeholder="Landmark" name="landmark" required="">
+											</div>
+										</div>
+										<div class="clear"> </div>
+									</div>
+									<div class="controls">
+										<input type="text" placeholder="Town/City" name="city" required="">
+									</div>
+									<div class="controls">
+										<select class="option-w3ls">
+											<option>Select Address type</option>
+											<option>Office</option>
+											<option>Home</option>
+											<option>Commercial</option>
 
-                    <%
-                    sizes = (ArrayList)request.getAttribute("sizes");
-                    pr = (ProductBean)request.getAttribute("pdet"); 
-                    %>
-                    <%out.println("<div class='col-md-5 single-right-left '><div class='grid images_3_of_2'><div class='flexslider'><ul class='slides'><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li></ul>");
-					out.println("<div class='clearfix'></div></div></div></div><div class='col-md-7 single-right-left simpleCart_shelfItem'><h3>" + pr.getBrand() + " " + pr.getColor() + " " + pr.getType()+ " </h3><p><span class='item_price'>"+ pr.getPrice()+"</span></p><div class='single-infoagile'><p>" + pr.getDescription() +"<br>");
-					out.println("<");
-					for(String s : sizes)
-					    out.println("<a href='#'>" + s + "</a>");
-				    out.println("<br><a>Sizing Help?</a></p></div><div class='occasion-cart'><div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'><form action='AddToCart' method='post'><fieldset><input type='hidden' name='pid' value='" + pr.getPid() + "'/><input type='submit' name='submit' value='Add to cart' class='button' /></fieldset></form></div></div></div><div class='clearfix'></div></div></div>");
-	%>
-	<!-- //Single Page -->
-	<!-- special offers -->
-	<!-- //special offers -->
-
-	<!-- newsletter -->
-	
-	<!-- //newsletter -->
-	<!-- footer -->
-S
-	<!-- //footer -->
-	<!-- copyright -->
-	>
+										</select>
+									</div>
+								</div>
+								<button class="submit check_out">Delivery to this Address</button>
+							</div>
+						</div>
+					</form>
+					<div class="checkout-right-basket">
+						<a href="payment.html">Make a Payment
+							<span class="fa fa-hand-o-right" aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //checkout page -->
+		<!-- footer -->
+		<!-- copyright -->
+	<div class="copy-right">
+		<div class="container">
+			<p>© 2017 Grocery Shoppy. All rights reserved | Design by
+				<a href="http://w3layouts.com"> W3layouts.</a>
+			</p>
+		</div>
+	</div>
 	<!-- //copyright -->
 
 	<!-- js-files -->
@@ -354,6 +456,50 @@ S
 		});
 	</script>
 	<!-- //cart-js -->
+
+	<!--quantity-->
+	<script>
+		$('.value-plus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) + 1;
+			divUpd.text(newVal);
+		});
+
+		$('.value-minus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) - 1;
+			if (newVal >= 1) divUpd.text(newVal);
+		});
+	</script>
+	<!--quantity-->
+	<script>
+		$(document).ready(function (c) {
+			$('.close1').on('click', function (c) {
+				$('.rem1').fadeOut('slow', function (c) {
+					$('.rem1').remove();
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function (c) {
+			$('.close2').on('click', function (c) {
+				$('.rem2').fadeOut('slow', function (c) {
+					$('.rem2').remove();
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function (c) {
+			$('.close3').on('click', function (c) {
+				$('.rem3').fadeOut('slow', function (c) {
+					$('.rem3').remove();
+				});
+			});
+		});
+	</script>
+	<!--//quantity-->
 
 	<!-- password-script -->
 	<script>
@@ -412,54 +558,6 @@ S
 		});
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
-
-	<!-- imagezoom -->
-	<script src="js/imagezoom.js"></script>
-	<!-- //imagezoom -->
-
-	<!-- FlexSlider -->
-	<script src="js/jquery.flexslider.js"></script>
-	<script>
-		// Can also be used with $(document).ready()
-		$(window).load(function () {
-			$('.flexslider').flexslider({
-				animation: "slide",
-				controlNav: "thumbnails"
-			});
-		});
-	</script>
-	<!-- //FlexSlider-->
-
-	<!-- flexisel (for special offers) -->
-	<script src="js/jquery.flexisel.js"></script>
-	<script>
-		$(window).load(function () {
-			$("#flexiselDemo1").flexisel({
-				visibleItems: 3,
-				animationSpeed: 1000,
-				autoPlay: true,
-				autoPlaySpeed: 3000,
-				pauseOnHover: true,
-				enableResponsiveBreakpoints: true,
-				responsiveBreakpoints: {
-					portrait: {
-						changePoint: 480,
-						visibleItems: 1
-					},
-					landscape: {
-						changePoint: 640,
-						visibleItems: 2
-					},
-					tablet: {
-						changePoint: 768,
-						visibleItems: 2
-					}
-				}
-			});
-
-		});
-	</script>
-	<!-- //flexisel (for special offers) -->
 
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>

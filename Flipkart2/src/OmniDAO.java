@@ -90,8 +90,47 @@ public class OmniDAO {
 		return ob;
 		
 	}
+
+		public boolean deleteFilter(int fid){
+		try {
+			Connection con = DBConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("delete from OmniBean where fid = ?");
+			ps.setInt(1, fid);
+			
+			if(ps.executeUpdate() == 1)
+				return true;
+			else 
+				return false;
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	public ArrayList<OmniBean> showFilters( String email){
+		DBConnection db = new DBConnection();
+		Connection con = db.getConnection();
+		ResultSet rs;
+		ArrayList<OmniBean> ol = new ArrayList<OmniBean>();
+		
+		try {
+		PreparedStatement ps = con.prepareStatement("select * from OmniFilter where email = ?");
+		ps.setString(1, email);
+		rs = ps.executeQuery();
 	
-	
+		while(rs.next()) {
+			OmniBean ob = new OmniBean(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getFloat(8), rs.getInt(9));		
+			ol.add(ob);
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return ol;
+
+		
+	}
+
 	
 
 }
