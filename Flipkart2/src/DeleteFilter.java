@@ -33,15 +33,47 @@ public class DeleteFilter extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int fid = (int)request.getAttribute("fid");
+		int fid = Integer.parseInt(request.getParameter("fid"));
 		OmniDAO od = new OmniDAO();
 		if(od.deleteFilter(fid))
 			System.out.println("Deleted");
 		else
 			System.out.println("Not Deleted");
-			
+		request.getRequestDispatcher("/ShowFilters").forward(request, response);
 		
 		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -303,6 +303,7 @@ out.println("<td>" + ob.getShoe() + "</td>");
 out.println("<td><a href = '/Flipkart2/DeleteFilter?fid=" + ob.getFid() + "'><span class = 'glyphicon glyphicon-trash'></span>'</a> </td>");
 out.println("</tr>");
 }
+
 %>
 </table></center>
 <br><br>

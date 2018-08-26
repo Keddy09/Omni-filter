@@ -94,7 +94,7 @@ public class OmniDAO {
 		public boolean deleteFilter(int fid){
 		try {
 			Connection con = DBConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("delete from OmniBean where fid = ?");
+			PreparedStatement ps = con.prepareStatement("delete from Omnifilter where fid = ?");
 			ps.setInt(1, fid);
 			
 			if(ps.executeUpdate() == 1)
