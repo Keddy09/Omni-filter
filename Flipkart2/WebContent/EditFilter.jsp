@@ -273,46 +273,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //tittle heading -->
 			<%@ page import = "java.util.*, beans.OmniBean" %>
                     <%!
-                    OmniBean pr;
-					ArrayList<OmniBean> ol;			
+                    OmniBean ob;			
                     %>
 
                     <%
-                    ol = (ArrayList)request.getAttribute("ol"); 
+                    ob = (OmniBean)request.getAttribute("ob"); 
                     %>
-<center> <h1> My Filters </h1>
-<br><br>
-<table>
-<tr>
-<th>Name</th>
-<th>Shoulder</th>
-<th>Bust/Chest</th>
-<th>Waist</th>
-<th>Hip</th>
-<th>Foot Length</th>
-</tr>
-<%
-for (OmniBean ob : ol){
-out.println("<tr>");
-out.println("<td>" + ob.getName() + "</td>");
-out.println("<td>" + ob.getShoulder() + "</td>");
-out.println("<td>" + ob.getBust() + "</td>");
-out.println("<td>" + ob.getWaist() + "</td>");
-out.println("<td>" + ob.getHip() + "</td>");
-out.println("<td>" + ob.getShoe() + "</td>");
-out.println("<td><a href = '/Flipkart2/DeleteFilter?fid=" + ob.getFid() + "'><span class = 'glyphicon glyphicon-trash'></span>'</a> </td>");
-out.println("<td><a href = '/Flipkart2/ShowEditFilter?fid=" + ob.getFid() + "'><span class = 'glyphicon glyphicon-pencil'></span>'</a> </td>");
-out.println("</tr>");
-}
-
-%>
-</table></center>
-<br><br>
-<center>
-<button onClick='goBack()'>Back</button>
-
-</center>
-
+<form action="EditOmniServlet" method="post">
+                                <input type="hidden" name="fid" value="<%=ob.getFid()%>" >
+							NAME :<div class="styled-input agile-styled-input-top">
+								<input type="text" name="name" value="<%=ob.getName()%>" required>
+							</div><br>
+							SHOULDER :<div class="styled-input">
+								<input type="text" placeholder="Shoulder Length(inches)" name="shoulder" value="<%=ob.getShoulder()%>" >
+							</div><br>
+							BUST :<div class="styled-input">
+								<input type="text" placeholder="Bust(inches)" name="bust" value ="<%=ob.getBust()%>"  required>
+							</div><br>
+							WAIST :<div class="styled-input">
+								<input type="text" placeholder="Waist(inches)" name="waist"  value ="<%=ob.getWaist()%>">
+							</div><br>
+							HIP :<div class="styled-input">
+								<input type="text" placeholder="Hip(inches)" name="hip" value=<%=ob.getWaist()%>>
+							</div><br>
+							FOOT LENGTH :<div class="styled-input">
+								<input type="text" placeholder="Foot length(inches)" name="shoe" value="<%=ob.getShoe()%>" required>
+							</div><br>
+							<input type="submit" value="Edit">
+						</form>
 
 <script>
 function goBack() {

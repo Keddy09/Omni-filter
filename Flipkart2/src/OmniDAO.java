@@ -131,6 +131,33 @@ public class OmniDAO {
 		
 	}
 
+	public boolean EditFilter(OmniBean ob) {
+		try {
+			DBConnection db = new DBConnection();
+			Connection con = db.getConnection();
+			PreparedStatement ps = con.prepareStatement("update OmniFilter set name = ?, shoulder = ?, bust = ?, waist = ?, hip = ?, shoe = ? where fid = ?");
+			ps.setString(1, ob.getName());
+			ps.setInt(2, ob.getShoulder());
+			ps.setInt(3, ob.getBust());
+			ps.setInt(4, ob.getWaist());
+			ps.setInt(5, ob.getHip());
+			ps.setFloat(6, ob.getShoe());
+			ps.setInt(7, ob.getFid());
+			if(ps.executeUpdate() == 1) {
+				System.out.println("Query executed");
+				return true;				
+			}else
+				return false;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+
+		
+		
+	}
+
 	
 
 }
