@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import beans.OmniBean;
 import beans.ProductBean;
 
 public class ProductDAO {
@@ -154,7 +155,27 @@ public class ProductDAO {
 		}
 		return pl;
 	}
+	public ArrayList<ProductBean> SearchProducts(String s) {
+		ArrayList<ProductBean> pl = new ArrayList<ProductBean>();
+		s = "'%" + s + "%'";
+		try {
+			DBConnection db = new DBConnection();
+			Connection con = db.getConnection();
+			Statement ps = con.createStatement();
+		    ResultSet rs = ps.executeQuery("select * from Products where category like "+ s +" or type like " + s + "or brand like" + s);
+		    while(rs.next()) {
+		    	ProductBean pb = new ProductBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+		    	pl.add(pb);
+		    }
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return pl;
+		
+		
 	}
+	
+}
 	
 	
 	

@@ -41,6 +41,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+<%@ page import = "java.util.*, beans.ProductBean, beans.WTBean, beans.WBBean, beans.WSBean" %>
+                    <%!
+                    ProductBean pr;
+					ArrayList<String> sizes;
+					ArrayList<WTBean> tchart;
+					ArrayList<WBBean> bchart;
+					ArrayList<WSBean> schart;
+					ArrayList<String> recc;
+					
+                    %>
+
+                    <%
+                    sizes = (ArrayList)request.getAttribute("sizes");
+                    pr = (ProductBean)request.getAttribute("pdet");
+                    if(pr.getCategory().equals("Top"))
+                       tchart = (ArrayList)request.getAttribute("schart");
+                    else if(pr.getCategory().equals("Bottom"))
+                        bchart = (ArrayList)request.getAttribute("schart");
+                    else
+                            schart = (ArrayList)request.getAttribute("schart");
+                    %>
+
 	<!-- top-header -->
 	<div class="header-most-top">
 		<p>Flipkart</p>
@@ -53,8 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 logo_agile">
 				<h1 style = "color : white;">
 					<a href="index.html">
-						Flipkart
-						<img style="max-height: 40px;"src="images/flip_logo.png"  alt=" ">
+						<img style="max-height: 40px;"src="images/Flipkart_logo.png"  alt=" ">
 					</a>
 				</h1>
 			</div>
@@ -78,8 +99,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
+					<form action="SearchServlet" method="post">
+						<input name="search" type="search" placeholder="How can we help you today?" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
@@ -113,26 +134,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body modal-body-sub_agile">
-					<div class="main-mailposi">
-						<span class="fa fa-envelope-o" aria-hidden="true"></span>
-					</div>
 					<div class="modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Sign In </h3>
-						<p>
-							Sign In now, Let's start your Grocery Shopping. Don't have an account?
-							<a href="#" data-toggle="modal" data-target="#myModal2">
-								Sign Up Now</a>
-						</p>
-						<form action="#" method="post">
-							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" name="Name" required="">
-							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" required="">
-							</div>
-							<input type="submit" value="Sign In">
-						</form>
-						<div class="clearfix"></div>
+					<center><br><p>SIZE CHART</p><br><table class='timetable_sub'>
+						<%
+						if(pr.getCategory().equals("Top")){
+						out.println("<tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hip</th><th>Shoulder</th></tr>");
+						for (WTBean ob : tchart){
+						out.println("<tr><td>" + ob.getSize() + "</td><td>" + ob.getBust() + "</td><td>" + ob.getWaist() + "</td><td>" + ob.getHip() + "</td><td>" + ob.getShoulder() + "</td></tr>");
+						}						
+						}
+						else if(pr.getCategory().equals("Bottom")){
+							out.println("<tr><th>Size</th><th>Waist</th><th>Hip</th><th>Inseem</th></tr>");
+							for (WBBean ob : bchart){
+							out.println("<tr><td>" + ob.getSize() + "</td><td>" + ob.getWaist() + "</td><td>" + ob.getHip() + "</td><td>" + ob.getInseem() + "</td></tr>");
+							}
+						}else{
+								out.println("<tr><th>UK size</th><th>US Size</th><th>Foot length</th></tr>");
+								for (WSBean ob : schart){
+								out.println("<tr><td>" + ob.getUk() + "</td><td>" + ob.getUs() + "</td><td>" + ob.getLength() + "</td></tr>");
+								
+							}
+						}
+						
+ %>
+ </table></center>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -163,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="index.html">Home
+									<a class="nav-stylehead" href="index.jsp">Home
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
@@ -218,15 +243,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<a class="nav-stylehead" href="faqs.html">Faqs</a>
 								</li>
 								<li class="dropdown">
-									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
+									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">mORE
 										<b class="caret"></b>
 									</a>
 									<ul class="dropdown-menu agile_short_dropdown">
 										<li>
-											<a href="icons.html">Web Icons</a>
+											<a href="icons.html">My Orders</a>
 										</li>
 										<li>
-											<a href="typography.html">Typography</a>
+											<a href="ShowFilters">Edit Filters</a>
 										</li>
 									</ul>
 								</li>
@@ -271,22 +296,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</span>
 			</h3>
 			<!-- //tittle heading -->
-			<%@ page import = "java.util.*, beans.ProductBean" %>
-                    <%!
-                    ProductBean pr;
-					ArrayList<String> sizes;			
-                    %>
-
-                    <%
-                    sizes = (ArrayList)request.getAttribute("sizes");
-                    pr = (ProductBean)request.getAttribute("pdet"); 
-                    %>
-                    <%out.println("<div class='col-md-5 single-right-left '><div class='grid images_3_of_2'><div class='flexslider'><ul class='slides'><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li></ul>");
+			                    <%out.println("<div class='col-md-5 single-right-left '><div class='grid images_3_of_2'><div class='flexslider'><ul class='slides'><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li><li data-thumb='" + pr.getImage() +"'><div class='thumb-image'><img src='" + pr.getImage() +"' data-imagezoom='true' class='img-responsive' alt=''> </div></li></ul>");
 					out.println("<div class='clearfix'></div></div></div></div><div class='col-md-7 single-right-left simpleCart_shelfItem'><h3>" + pr.getBrand() + " " + pr.getColor() + " " + pr.getType()+ " </h3><p><span class='item_price'>"+ pr.getPrice()+"</span></p><div class='single-infoagile'><p>" + pr.getDescription() +"<br>");
 					out.println("<");
 					for(String s : sizes)
 					    out.println("<a href='#'>" + s + "</a>");
-				    out.println("<br><a>Sizing Help?</a></p></div><div class='occasion-cart'><div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'><form action='AddToCart' method='post'><fieldset><input type='hidden' name='pid' value='" + pr.getPid() + "'/><input type='submit' name='submit' value='Add to cart' class='button' /></fieldset></form></div></div></div><div class='clearfix'></div></div></div>");
+				    out.println("<br><a href='#' data-toggle='modal' data-target='#myModal1'>Sizing Help?</a></p></div><div class='occasion-cart'><div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'><form action='AddToCart' method='post'><fieldset><input type='hidden' name='pid' value='" + pr.getPid() + "'/><input type='submit' name='submit' value='Add to cart' class='button' /></fieldset></form></div></div></div><div class='clearfix'></div></div></div>");
 	%>
 	<!-- //Single Page -->
 	<!-- special offers -->

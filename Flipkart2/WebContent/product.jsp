@@ -51,8 +51,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 logo_agile">
 				<h1 style = "color : white;">
 					<a href="index.html">
-						Flipkart
-						<img style="max-height: 40px;"src="images/flip_logo.png"  alt=" ">
+
+						<img style="max-height: 40px;"src="images/Flipkart_logo.png"  alt=" ">
 					</a>
 				</h1>
 			</div>
@@ -76,8 +76,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
+					<form action="SearchServlet" method="post">
+						<input name="search" type="search" placeholder="How can we help you today?" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
@@ -216,15 +216,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<a class="nav-stylehead" href="faqs.html">Faqs</a>
 								</li>
 								<li class="dropdown">
-									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
+									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">More
 										<b class="caret"></b>
 									</a>
 									<ul class="dropdown-menu agile_short_dropdown">
 										<li>
-											<a href="icons.html">Web Icons</a>
+											<a href="icons.html">My Orders</a>
 										</li>
 										<li>
-											<a href="typography.html">Typography</a>
+											<a href="ShowFilters">Edit Filters</a>
 										</li>
 									</ul>
 								</li>
@@ -248,7 +248,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.html">Home</a>
+						<a href="index.jsp">Home</a>
 						<i>|</i>
 					</li>
 					<li>Women Fashion</li>

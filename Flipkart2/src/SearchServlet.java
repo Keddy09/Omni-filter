@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.OmniBean;
 import beans.ProductBean;
 
 /**
- * Servlet implementation class ShowProductServlet
+ * Servlet implementation class SearchServlet
  */
-@WebServlet("/ShowProductServlet")
-public class ShowProductServlet extends HttpServlet {
+@WebServlet("/SearchServlet")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowProductServlet() {
+    public SearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +31,6 @@ public class ShowProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -38,27 +38,17 @@ public class ShowProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String s = request.getParameter("pid");
+		String s = request.getParameter("search");
 		System.out.println(s);
-		int pid = Integer.parseInt(s);
+		ArrayList<ProductBean> pl = new ArrayList<ProductBean>();
 		ProductDAO pd = new ProductDAO();
-		ProductBean pb = pd.getSingleProduct(pid);
-		request.setAttribute("pdet", pb);
-		ArrayList<String> sizes = pd.getSizes(pb.getPid());
-		if(pb.getCategory().equals("Top")) {
-			WTDAO td = new WTDAO();
-			request.setAttribute("schart", td.getChart(pb.getBrand()));
-		}
-		else if(pb.getCategory().equals("Bottom")) {
-			WBDAO td = new WBDAO();
-			request.setAttribute("schart", td.getChart(pb.getBrand()));
-		}
-		else {
-			WSDAO td = new WSDAO();
-			request.setAttribute("schart", td.getChart(pb.getBrand()));
-		}
-		request.setAttribute("sizes", sizes);
-		request.getRequestDispatcher("single.jsp").forward(request, response);
+		pl = pd.SearchProducts(s);
+		System.out.println(pl.size());
+		
+		request.setAttribute("plist" , pl);
+       request.getRequestDispatcher("product.jsp").forward(request, response);
+		
+		
 		
 	}
 

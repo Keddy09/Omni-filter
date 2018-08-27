@@ -40,9 +40,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 	<!-- top-header -->
-	<div class="header-most-top">
-		<p>Flipkart</p>
-	</div>
 	<!-- //top-header -->
 	<!-- header-bot-->
 	<div class="header-bot">
@@ -51,8 +48,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 logo_agile">
 				<h1 style = "color : white;">
 					<a href="index.html">
-						Flipkart
-						<img style="max-height: 40px;"src="images/flip_logo.png"  alt=" ">
+		
+						<img style="max-height: 40px;"src="images/Flipkart_logo.png"  alt=" ">
 					</a>
 				</h1>
 			</div>
@@ -69,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="glyphicon glyphicon-filter " aria-hidden="true"></span>Omni Filter</a>
 					</li>				
 					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
+						<a href="#" data-toggle="modal" data-target="">
 							<span class="fa fa-user-circle-o" aria-hidden="true"></span> Profile </a>
 					</li>
 					<li>
@@ -80,8 +77,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
+					<form action="SearchServlet" method="post">
+						<input name="search" type="search" placeholder="What are you looking for today?" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>

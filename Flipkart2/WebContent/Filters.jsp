@@ -42,9 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 	<!-- top-header -->
-	<div class="header-most-top">
-		<p>Flipkart</p>
-	</div>
+	
 	<!-- //top-header -->
 	<!-- header-bot-->
 	<div class="header-bot">
@@ -54,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h1 style = "color : white;">
 					<a href="index.html">
 						Flipkart
-						<img style="max-height: 40px;"src="images/flip_logo.png"  alt=" ">
+						<img style="max-height: 40px;"src="images/Flipkart_logo.png"  alt=" ">
 					</a>
 				</h1>
 			</div>
@@ -163,7 +161,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="index.html">Home
+									<a class="nav-stylehead" href="index.jsp">Home
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
@@ -218,15 +216,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<a class="nav-stylehead" href="faqs.html">Faqs</a>
 								</li>
 								<li class="dropdown">
-									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
+									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">More
 										<b class="caret"></b>
 									</a>
 									<ul class="dropdown-menu agile_short_dropdown">
 										<li>
-											<a href="icons.html">Web Icons</a>
+											<a href="icons.html">My Orders</a>
 										</li>
 										<li>
-											<a href="typography.html">Typography</a>
+											<a href="ShowFilters">Edit Filters</a>
 										</li>
 									</ul>
 								</li>
@@ -240,30 +238,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- //navigation -->
 	<!-- banner-2 -->
-	<div class="page-head_agile_info_w3l">
 
-	</div>
 	<!-- //banner-2 -->
 	<!-- page -->
-	<div class="services-breadcrumb">
-		<div class="agile_inner_breadcrumb">
-			<div class="container">
-				<ul class="w3_short">
-					<li>
-						<a href="index.html">Home</a>
-						<i>|</i>
-					</li>
-					<li>Single Page</li>
-				</ul>
-			</div>
-		</div>
-	</div>
 	<!-- //page -->
 	<!-- Single Page -->
 	<div class="banner-bootom-w3-agileits">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Single Product
+			<h3 class="tittle-w3l">My Filters
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -280,9 +263,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <%
                     ol = (ArrayList)request.getAttribute("ol"); 
                     %>
-<center> <h1> My Filters </h1>
+<center> 
 <br><br>
-<table>
+<table class="timetable_sub">
 <tr>
 <th>Name</th>
 <th>Shoulder</th>
